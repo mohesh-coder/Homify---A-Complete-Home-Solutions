@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Service Provider Form</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            background-image: url('your-dark-background-image.jpg'); /* Replace with a dark-themed background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 15px 20px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #0ABAB5;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-top: 5px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #aaa;
+            background-color: #666;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button[type="submit"] {
+            background-color: #0ABAB5;
+            color: #1e1e1e;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #e59400;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            clear: both;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* File upload preview */
+        .image-preview {
+            max-width: 100%;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        /* Service type details */
+        .service-type-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #2a2a2a;
+        }
+
+        .service-type-details.show {
+            display: block;
+        }
+
+        /* Validation error message */
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Food Service Provider Form</h1>
+    </header>
+
+    <div class="container">
+        <form action="food_save_provider.php" method="post" enctype="multipart/form-data" id="service-provider-form">
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" required>
+
+            <label for="company_email">Company Email:</label>
+            <input type="email" id="company_email" name="company_email" required>
+
+            <label for="city">City:</label>
+            <select id="city" name="city" required>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Vellore">Vellore</option>
+            </select>
+
+            <label for="about_company">About Company:</label>
+            <textarea id="about_company" name="about_company" required></textarea>
+
+            <label for="service_type">Service Type:</label>
+            <select id="service_type" name="service_type" onchange="toggleServiceDetails()" required>
+                <option value="">Select Service Type</option>
+                <option value="non_veg">Non-Veg</option>
+                <option value="veg">Veg</option>
+            </select>
+
+            <div id="non-veg-details" class="service-type-details">
+                <label for="non_veg_details">Non-Veg Details:</label>
+                <textarea id="non_veg_details" name="non_veg_details"></textarea>
+            </div>
+
+            <div id="veg-details" class="service-type-details">
+                <label for="veg_details">Veg Details:</label>
+                <textarea id="veg_details" name="veg_details"></textarea>
+            </div>
+
+            <label for="image">Company Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" required>
+            <div class="image-preview" id="image-preview">
+                <img id="preview" src="#" alt="Image Preview">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 Food Service Provider Form. All rights reserved.
+    </footer>
+
+    <script>
+        // Toggle service type details
+        function toggleServiceDetails() {
+            const serviceType = document.getElementById('service_type').value;
+            const nonVegDetails = document.getElementById('non-veg-details');
+            const vegDetails = document.getElementById('veg-details');
+
+            nonVegDetails.classList.remove('show');
+            vegDetails.classList.remove('show');
+
+            if (serviceType === 'non_veg') {
+                nonVegDetails.classList.add('show');
+            } else if (serviceType === 'veg') {
+                vegDetails.classList.add('show');
+            }
+        }
+
+        // File upload preview
+        function previewImage(event) {
+            const preview = document.getElementById('preview');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                preview.src = reader.result;
+                document.getElementById('image-preview').style.display = 'block';
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Autofill form fields based on URL parameters
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById('company_name').value = urlParams.get('name') || '';
+            document.getElementById('company_email').value = urlParams.get('email') || '';
+            document.getElementById('city').value = urlParams.get('location') || '';
+        }
+    </script>
+</body>
+</html>

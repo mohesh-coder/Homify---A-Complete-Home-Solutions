@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water and Food Supply Services</title>
+    <style>
+        :root {
+  --tiffany-blue: #0abab5;
+  --dark-bg: #1a1a1a;
+  --darker-bg: #0f0f0f;
+  --light-text: #f0f0f0;
+  --dark-text: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--light-text);
+  background-color: var(--dark-bg);
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background-color: var(--darker-bg);
+  padding: 20px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--tiffany-blue);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav a {
+  color: var(--light-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--tiffany-blue);
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-bg.jpg') no-repeat center center/cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--tiffany-blue);
+  color: var(--dark-text);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+  background: #08a29d;
+}
+
+section {
+  padding: 60px 0;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--tiffany-blue);
+}
+
+.service-grid, .price-grid, .review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.service, .price-item, .review {
+  background: var(--darker-bg);
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--tiffany-blue);
+}
+
+.service h3, .price-item h3, .review h3 {
+  color: var(--tiffany-blue);
+  margin-bottom: 15px;
+}
+
+.service-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--tiffany-blue);
+  text-decoration: none;
+}
+
+.stars {
+  color: var(--tiffany-blue);
+  margin-top: 10px;
+}
+
+#contact {
+  background: var(--darker-bg);
+  text-align: center;
+}
+
+footer {
+  background: var(--darker-bg);
+  color: var(--light-text);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.contact-info, .social-media, .footer-nav {
+  margin-bottom: 20px;
+}
+
+.social-media a, .footer-nav a {
+  color: var(--tiffany-blue);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+  
+  nav {
+    flex-direction: column;
+  }
+  
+  nav ul {
+    margin-top: 20px;
+  }
+  
+  nav ul li {
+    margin: 10px 0;
+  }
+  
+  .hero h1 {
+    font-size: 2em;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Water and Food Supply Services</div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="water_supply/water_supply.html">Water Supply</a></li>
+                    <li><a href="food_supply/food_supply.html">Food Supply</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Your Trusted Water and Food Supply Partner</h1>
+                <p>We make your Water and Food Supply Easy</p>
+                <a href="#contact" class="cta">Contact Us</a>
+            </div>
+        </section>
+
+        <section id="intro">
+            <div class="container">
+                <h2>Welcome to Water and Food Supply Services</h2>
+                <p class="center"><strong class="text-center"> provide reliable and professional water and food supply services for residential and commercial clients.</strong></p>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service">
+                        <h3>Water Supply</h3>
+                        <p>We help you to provide reliable and efficient water supply services.</p>
+                        <p><strong>Competitive rates starting for delivery.</strong></p>
+                        <p>Certified water supply experts with modern equipment.</p>
+                        <a href="water_supply/water_supply.html" class="service-link">Learn More</a>
+                    </div>
+                    <div class="service">
+                        <h3>Food Supply</h3>
+                        <p>To offer high-quality food supply solutions.</p>
+                        <p><strong>Affordable rates starting for order.</strong></p>
+                        <p>Experienced food supply professionals with quality assurance.</p>
+                        <a href="food_supply/food_supply.html" class="service-link">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prices">
+            <div class="container">
+                <h2>Prices</h2>
+                <div class="price-grid">
+                    <div class="price-item">
+                        <h3>Water Supply Services</h3>
+                        <p><strong>Starting at ₹10/per liter</strong></p>
+                        <p>Includes residential water delivery, commercial water supply, emergency water delivery, and custom water solutions.</p>
+                    </div>
+                    <div class="price-item">
+                        <h3>Food Supply Services</h3>
+                        <p><strong>Starting at ₹100</strong></p>
+                        <p>Includes residential food delivery, commercial food supply, emergency food assistance, and special dietary needs catering.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <div class="container">
+                <h2>Customer Reviews</h2>
+                <div class="review-grid">
+                    <div class="review">
+                        <h3>John Doe</h3>
+                        <p>"The water supply service was prompt and reliable. Highly recommend!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <div class="review">
+                        <h3>Jane Smith</h3>
+                        <p>"Great food supply service! Fresh and quality products delivered on time."</p>
+                        <div class="stars">★★★★☆</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Ready to Get Started?</h2>
+                <p>Contact us or sign up for more information.</p>
+                <a href="../home.html#contact" class="cta">Contact Us</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>Welcome to Water and Food Supply Services, your trusted partner in essential supplies. With years of experience, we specialize in residential and commercial services, ensuring a hassle-free experience for our clients. Our dedicated team is committed to providing top-notch service, making your routine smooth and stress-free.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="contact-info">
+                <p>Contact us at <strong>info@waterandfoodsupply.com</strong></p>
+                <p>Call us: <strong>+1 (123) 456-7890</strong></p>
+            </div>
+            <div class="social-media">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+            </div>
+            <nav class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#prices">Prices</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact Us</a>
+            </nav>
+            <p>&copy; 2024 Water and Food Supply Services. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

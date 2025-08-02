@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Homify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        .auth-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .auth-container h2 {
+            color: var(--tiffany-blue);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-control {
+            background-color: #333;
+            border-color: #444;
+            color: var(--dark-text);
+        }
+        .form-control:focus {
+            background-color: #444;
+            border-color: var(--tiffany-blue);
+            color: var(--dark-text);
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Sign Up for Homify</h2>
+        <form id="signup-form" action="signup.php" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-check mb-3">
+                <input type="checkbox" id="is_service_provider" name="is_service_provider" class="form-check-input" value="1">
+                <label for="is_service_provider" class="form-check-label">I am a service provider</label>
+            </div>
+            <div id="provider-fields" style="display: none;">
+                <div class="form-group">
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="service_type">Service Type:</label>
+                    <select id="service_type" name="service_type" class="form-control">
+                        <option value="">Select a service type</option>
+                        <option value="house_maintenance">House Maintenance</option>
+                        <option value="package_and_movers">Package and Movers</option>
+                        <option value="food_supply">Food Supply</option>
+                        <option value="water_supply">Water Supply</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="login.html" class="text-light">Already have an account? Login</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Replace the existing script at the bottom of the file with this: -->
+<!-- Replace the existing script at the bottom of the file with this: -->
+<script>
+    document.getElementById('is_service_provider').onchange = function() {
+        document.getElementById('provider-fields').style.display = this.checked ? 'block' : 'none';
+    };
+
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        fetch('signup.php', {
+            method: 'POST',
+            body: new FormData(this)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                if (data.is_service_provider) {
+                    let redirectUrl;
+                    switch(data.service_type) {
+                        case 'house_maintenance':
+                            redirectUrl = 'home_maintenance_service_provider.html';
+                            break;
+                        case 'package_and_movers':
+                            redirectUrl = 'package_and_movers_service_provider.html';
+                            break;
+                        case 'food_supply':
+                            redirectUrl = 'food_service_provider_form.html';
+                            break;
+                        case 'water_supply':
+                            redirectUrl = 'water_service_providers.html';
+                            break;
+                        default:
+                            redirectUrl = 'service_provider.html';
+                    }
+                    const params = new URLSearchParams({
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone_number').value,
+                        location: document.getElementById('location').value
+                    });
+                    window.location.href = `${redirectUrl}?${params.toString()}&user_id=${data.user_id}`;
+                } else {
+                    alert(data.message);
+                    // Redirect to user dashboard or home page
+                }
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    });
+</script>
+</body>
+</html>

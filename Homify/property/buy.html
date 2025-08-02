@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Properties - Homify</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+       #propertiesTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+        }
+
+        #propertiesTable th, #propertiesTable td {
+            border: 1px solid #444;
+            padding: 12px;
+            text-align: left;
+        }
+
+        #propertiesTable th {
+            background-color: #1c1c1c;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        #propertiesTable tr:nth-child(even) {
+            background-color: #333333;
+        }
+
+        #propertiesTable tr:hover {
+            background-color: #3a3a3a;
+        }
+
+        #propertiesTable button {
+            padding: 8px 15px;
+            background-color: #00b5b5; /* Tiffany blue */
+            color: #000000;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        #propertiesTable button:hover {
+            background-color: #00d8d8; /* Lighter Tiffany blue on hover */
+        }
+
+        #propertiesTable .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        #propertiesTable .quote-btn {
+            background-color: #00b5b5; /* Green */
+        }
+        #propertiesTable .quote-btn:hover {
+            background-color: #00d8d8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#">Homify</a>
+        </div>
+        <nav class="navbar">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About Us</a>
+            <a href="buy.html">Buy</a>
+            <a href="sell.html">Sell</a>
+            <a href="rent.html">Rent</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="property-listings">
+        <h2>Properties for Sale</h2>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="location"><i class="fas fa-map-marker-alt"></i> Location:</label>
+                <select id="location">
+                    <option value="">All Locations</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="max_price"><i class="fas fa-rupee-sign"></i> Maximum Price:</label>
+                <input type="number" id="max_price" min="0" step="1000">
+            </div>
+            <button class="apply-filters-btn" onclick="filterProperties()"><i class="fas fa-search"></i> Apply Filters</button>
+        </div>
+        <div id="map" style="height: 400px; width: 100%; display: none; margin-top: 20px;"></div>
+        <table id="propertiesTable">
+            <thead>
+                <tr>
+                    <th>Property Type</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="propertiesTableBody">
+                <!-- Properties will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Homify. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVWZXBnQtGGnVZYPyFMU5Yp25ZH7FAUXU&callback=initMap" async defer></script>
+    <script src="scripts/display_properties.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('php/fetch_locations.php')
+                .then(response => response.json())
+                .then(locations => {
+                    const locationSelect = document.getElementById('location');
+                    locations.forEach(location => {
+                        const option = document.createElement('option');
+                        option.value = location;
+                        option.textContent = location;
+                        locationSelect.appendChild(option);
+                    });
+                });
+        });
+
+        function getQuote(propertyId) {
+            // Redirect to the contact form page with the property ID
+            window.location.href = `contact_form.html?property_id=${propertyId}`;
+        }
+    </script>
+</body>
+</html>

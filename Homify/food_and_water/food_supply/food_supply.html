@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Supply Services</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root {
+  --tiffany-blue: #0abab5;
+  --dark-bg: #1a1a1a;
+  --darker-bg: #0f0f0f;
+  --light-text: #f0f0f0;
+  --dark-text: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--light-text);
+  background-color: var(--dark-bg);
+}
+
+.container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background-color: var(--darker-bg);
+  padding: 20px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--tiffany-blue);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav a {
+  color: var(--light-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--tiffany-blue);
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/water-hero-bg.jpg') no-repeat center center/cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--tiffany-blue);
+  color: var(--dark-text);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+  background: #08a29d;
+}
+
+section {
+  padding: 60px 0;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--tiffany-blue);
+}
+
+.service-grid, .faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.service, .faq-item {
+  background: var(--darker-bg);
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--tiffany-blue);
+}
+
+.service h3, .faq-item h3 {
+  color: var(--tiffany-blue);
+  margin-bottom: 15px;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+footer {
+  background: var(--darker-bg);
+  color: var(--light-text);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.scroll-top {
+  display: inline-block;
+  background: var(--tiffany-blue);
+  color: var(--dark-text);
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-top:hover {
+  background: #08a29d;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+  
+  nav {
+    flex-direction: column;
+  }
+  
+  nav ul {
+    margin-top: 20px;
+  }
+  
+  nav ul li {
+    margin: 10px 0;
+  }
+  
+  .hero h1 {
+    font-size: 2em;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Food Supply Services</div>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../water_supply/water_supply.html">Water Supply</a></li>
+                    <li><a href="food_supply.html">Food Supply</a></li>
+                    <li><a href="../index.html#about">About Us</a></li>
+                    <li><a href="../index.html#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1>Food Supply Services</h1>
+                <p>Quality Food Supply Solutions for All</p>
+                <a href="food_service_seeker_search.html" class="cta">Service Seekers</a>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Our Food Supply Services</h2>
+                <div class="service-grid">
+                    <div class="service">
+                        <h3>Residential Food Supply</h3>
+                        <p>Fresh and quality food for your home.</p>
+                    </div>
+                    <div class="service">
+                        <h3>Commercial Food Supply</h3>
+                        <p>Reliable food solutions for businesses.</p>
+                    </div>
+                    <div class="service">
+                        <h3>Emergency Food Delivery</h3>
+                        <p>24/7 emergency food supply services.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>What services do we provide?</h3>
+                        <p>We provide food supply services to residential and commercial areas.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How can I contact customer support?</h3>
+                        <p>You can contact our customer support team through our contact us page.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Do you offer emergency services?</h3>
+                        <p>Yes, we provide emergency food supply services round the clock.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Food Supply Services. All rights reserved.</p>
+            <a href="#" class="scroll-top">↑</a>
+        </div>
+    </footer>
+</body>
+</html>

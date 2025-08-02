@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Service Provider Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            background-image: url('your-dark-background-image.jpg'); /* Replace with a dark-themed background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+        }
+
+        .navbar {
+            background-color: #1a1a1a;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .navbar h1 {
+            color: #0ABAB5;
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #0ABAB5;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            color: #e0e0e0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"] {
+            height: 40px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background: #0ABAB5;
+            color: #1e1e1e;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #e59400;
+        }
+
+        .service-type-details {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Water Service Provider Registration</h1>
+    </nav>
+
+    <main>
+        <section class="contact-form">
+            <h2>Become a Water Service Provider</h2>
+            <form action="water_save_service_provider.php" method="post" enctype="multipart/form-data" id="service-provider-form">
+                <label for="company_name">Company Name:</label>
+                <input type="text" id="company_name" name="company_name" required>
+
+                <label for="company_email">Company Email:</label>
+                <input type="email" id="company_email" name="company_email" required>
+
+                <label for="city">City:</label>
+                <select id="city" name="city" required>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Vellore">Vellore</option>
+                </select>
+
+                <label for="about_company">About Company:</label>
+                <textarea id="about_company" name="about_company" required></textarea>
+
+                <label for="service_type">Service Type:</label>
+                <select id="service_type" name="service_type" onchange="toggleServiceDetails()" required>
+                    <option value="">Select Service Type</option>
+                    <option value="drinking water">Drinking Water</option>
+                    <option value="normal water">Normal Water</option>
+                </select>
+
+                <div id="drinking-water-details" class="service-type-details" style="display: none;">
+                    <label for="drinking_water_details">Drinking Water Details:</label>
+                    <textarea id="drinking_water_details" name="drinking_water_details"></textarea>
+                </div>
+
+                <div id="normal-water-details" class="service-type-details" style="display: none;">
+                    <label for="normal_water_details">Normal Water Details:</label>
+                    <textarea id="normal_water_details" name="normal_water_details"></textarea>
+                </div>
+
+                <label for="image">Company Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" required>
+            <div class="image-preview" id="image-preview">
+                <img id="preview" src="#" alt="Image Preview">
+            </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Toggle service type details
+        function toggleServiceDetails() {
+            const serviceType = document.getElementById('service_type').value;
+            const drinkingWaterDetails = document.getElementById('drinking-water-details');
+            const normalWaterDetails = document.getElementById('normal-water-details');
+
+            drinkingWaterDetails.style.display = 'none';
+            normalWaterDetails.style.display = 'none';
+
+            if (serviceType === 'drinking water') {
+                drinkingWaterDetails.style.display = 'block';
+            } else if (serviceType === 'normal water') {
+                normalWaterDetails.style.display = 'block';
+            }
+        }
+
+        // Image preview functionality
+        function previewImage(event) {
+            const preview = document.getElementById('preview');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                preview.src = reader.result;
+                document.getElementById('image-preview').style.display = 'block';
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById('company_name').value = urlParams.get('name') || '';
+            document.getElementById('company_email').value = urlParams.get('email') || '';
+            document.getElementById('phone').value = urlParams.get('phone') || '';
+            document.getElementById('city').value = urlParams.get('location') || '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Seeker Search</title>
+    
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e;
+            color: #ddd;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #2e2e2e;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-top: 5px;
+            background-color: #555;
+            color: #ddd;
+        }
+
+        select:focus, button:focus {
+            outline: none;
+            border-color: #aaa;
+            background-color: #666;
+        }
+
+        button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            clear: both;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Service Seeker Search</h1>
+    </header>
+
+    <div class="container">
+        <form action="food_search_providers.php" method="post">
+            <label for="service_type">Service Type:</label>
+            <select id="service_type" name="service_type" required>
+                <option value="non_veg">Non-Veg</option>
+                <option value="veg">Veg</option>
+            </select>
+
+            <label for="city">City:</label>
+            <select id="city" name="city" required>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Vellore">Vellore</option>
+                <!-- Add more cities as needed -->
+            </select>
+            
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="results">
+            <!-- Search results will be displayed here -->
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Service Seeker Search. All rights reserved.
+    </footer>
+
+</body>
+</html>

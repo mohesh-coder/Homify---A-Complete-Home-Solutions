@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            background-image: url('your-dark-background-image.jpg'); /* Replace with a dark-themed background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #e0e0e0;
+        }
+
+        .navbar {
+            background-color: #1a1a1a;
+            padding: 30px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .navbar h1 {
+            color: #0ABAB5;
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #0ABAB5;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            color: #e0e0e0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"] {
+            height: 40px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background: #0ABAB5;
+            color: #1e1e1e;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #e59400;
+        }
+
+        .vehicle-image {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .vehicle-image img {
+            width: 250px;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            display: none;
+        }
+
+        .vehicle-image img.active {
+            display: block;
+        }
+
+        .vehicle-image img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Service Provider Registration</h1>
+    </nav>
+
+    <main>
+        <section class="contact-form">
+            <h2>Become a Service Provider</h2>
+            <form id="provider-form" action="package_submit_provider.php" method="POST">
+                <label for="name">Name or company name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+
+                <label for="services">Services offered:</label>
+                <textarea id="services" name="services" rows="4" required></textarea>
+
+                <label for="vehicle">Select Vehicle Type</label>
+                <select id="vehicle" name="vehicle" required>
+                    <option value="all">All</option>
+                    <option value="van">Van</option>
+                    <option value="truck">Truck</option>
+                    <option value="pickup truck">Pickup Truck</option>
+                </select>
+
+                <label for="number">Number of Vehicles Available</label>
+                <input type="number" id="number" name="number" min="1" max="50" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Add event listener to the vehicle select dropdown
+        document.getElementById('vehicle').addEventListener('change', function() {
+            // Get the selected vehicle type
+            const selectedVehicle = this.value;
+
+            // Get all vehicle images
+            const vehicleImages = document.querySelectorAll('.vehicle-image img');
+
+            // Hide all images initially
+            vehicleImages.forEach((image) => {
+                image.classList.remove('active');
+                image.style.display = 'none';
+            });
+
+            // Show the corresponding image based on the selected vehicle type
+            if (selectedVehicle!== 'all') {
+                const selectedImage = document.querySelector(`.vehicle-image img.${selectedVehicle}`);
+                selectedImage.classList.add('active');
+                selectedImage.style.display = 'block';
+            }
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById('name').value = urlParams.get('name') || '';
+            document.getElementById('email').value = urlParams.get('email') || '';
+            document.getElementById('phone').value = urlParams.get('phone') || '';
+            document.getElementById('location').value = urlParams.get('location') || '';
+        }
+    </script>
+</body>
+</html>

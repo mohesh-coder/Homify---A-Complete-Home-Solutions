@@ -1,0 +1,12 @@
+CREATE TABLE properties (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    property_type VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    price INT(11) NOT NULL,
+    sale_or_rent ENUM('sale', 'rent') NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    latitude DECIMAL(10, 8) NOT NULL,
+    longitude DECIMAL(11, 8) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homify - Your One-Stop Housing Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header class="header sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="home_assets/homify-logo.png" alt="Homify Logo" class="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Services
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="property/index.html">Real Estate</a>
+                                <a class="dropdown-item" href="home_maintain/index.html">Home Maintenance</a>
+                                <a class="dropdown-item" href="package/index.html">Moving Services</a>
+                                <a class="dropdown-item" href="food_and_water/index.html">Food & Water Supply</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-nav" id="userMenu">
+                        <a href="login.html" id="login-btn" class="btn btn-outline-light mr-2">Login</a>
+                        <a href="signup.html" id="signup-btn" class="btn btn-primary">Sign up</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="video-container">
+                <video class="hero-video" autoplay loop muted playsinline>
+                    <source src="home_assets/hero-background.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="hero-content">
+                <div class="container text-center">
+                    <h1 class="display-4 animate__animated animate__fadeInDown">Your One-Stop Solution for All Housing Services</h1>
+                    <p class="lead animate__animated animate__fadeInUp">Find and book real estate, plumbing, electrical, and other housing services with ease.</p>
+                    <a href="#services" class="btn btn-primary btn-lg animate__animated animate__fadeInUp">Explore Services</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Services</h2>
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="service-card" id="real-estate">
+                            <i class="fas fa-home service-icon"></i>
+                            <a href="property/index.html" class="text-light"><h3>Real Estate</h3>
+                            <p>Buy, sell, or rent properties with our expert assistance.</p></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="service-card" id="home-maintenance">
+                            <i class="fas fa-tools service-icon"></i>
+                            <a href="home_maintain/index.html" class="text-light"><h3>Home Maintenance</h3>
+                            <p>Keep your home in top shape with our maintenance services.</p></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="service-card" id="moving-services">
+                            <i class="fas fa-truck service-icon"></i>
+                            <a href="package/index.html" class="text-light"><h3>Moving Services</h3>
+                            <p>Relocate stress-free with our professional moving team.</p></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="service-card" id="supply-services">
+                            <i class="fas fa-utensils service-icon"></i>
+                            <a href="food_and_water/index.html" class="text-light"><h3>Food & Water Supply</h3>
+                            <p>Get essential supplies delivered right to your doorstep.</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 animate__animated animate__fadeInLeft">
+                        <h2 style="color: #0abab5;">Comprehensive Real Estate Services</h2>
+                        <p>Transform your housing dreams into reality with our end-to-end real estate solutions.</p>
+                        <ul>
+                            <li><strong>Wide property listings:</strong> Access an extensive database of homes, apartments, and commercial spaces to find your perfect match.</li>
+                            <li><strong>Seamless transactions:</strong> Experience smooth, transparent, and secure property deals with our streamlined processes.</li>
+                            <li><strong>Market insights:</strong> Stay informed with up-to-date market trends and property valuations.</li>
+                        </ul>
+                        <p>Whether you're a first-time buyer, seasoned investor, or looking to rent, our real estate services cater to all your needs.</p>
+                    </div>
+                    <div class="col-md-6 animate__animated animate__fadeInRight">
+                        <video autoplay loop muted playsinline class="img-fluid rounded">
+                            <source src="home_assets/real-estate-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="feature-section bg-dark">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2 animate__animated animate__fadeInRight">
+                        <h2 style="color: #0abab5;">Expert Home Maintenance Services</h2>
+                        <p>Keep your home in top condition with our comprehensive maintenance solutions.</p>
+                        <ul>
+                            <li><strong>Skilled technicians:</strong> Our certified professionals handle a wide range of home repairs and improvements.</li>
+                            <li><strong>24/7 emergency services:</strong> Round-the-clock support for urgent issues to ensure your home's safety and comfort.</li>
+                            <li><strong>Affordable maintenance plans:</strong> Customized packages to fit your budget and home's specific needs.</li>
+                            <li><strong>Preventive care:</strong> Regular check-ups and maintenance to avoid costly repairs in the future.</li>
+                            <li><strong>Eco-friendly solutions:</strong> Energy-efficient upgrades and sustainable maintenance practices.</li>
+                        </ul>
+                        <p>From minor fixes to major renovations, we've got all your home maintenance needs covered.</p>
+                    </div>
+                    <div class="col-md-6 order-md-1 animate__animated animate__fadeInLeft">
+                        <video autoplay loop muted playsinline class="img-fluid rounded">
+                            <source src="home_assets/maintenance-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="feature-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 animate__animated animate__fadeInLeft">
+                        <h2 style="color: #0abab5;">Package and Moving Services</h2>
+                        <p>Relocate with ease and peace of mind using our comprehensive moving solutions.</p>
+                        <ul>
+                            <li><strong>Professional movers:</strong> Trained and experienced staff to handle your belongings with care.</li>
+                            <li><strong>Safe and secure packaging:</strong> High-quality materials and techniques to protect your items during transit.</li>
+                            <li><strong>Timely deliveries:</strong> Punctual and efficient moving schedules to meet your timeline.</li>
+                            <li><strong>Custom moving plans:</strong> Tailored services for local, long-distance, or international moves.</li>
+                            <li><strong>Storage solutions:</strong> Secure, climate-controlled facilities for short-term or long-term storage needs.</li>
+                        </ul>
+                        <p>Let us take the stress out of your move, whether you're relocating across the street or across the globe.</p>
+                    </div>
+                    <div class="col-md-6 animate__animated animate__fadeInRight">
+                        <video autoplay loop muted playsinline class="img-fluid rounded">
+                            <source src="home_assets/moving-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="feature-section bg-dark">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2 animate__animated animate__fadeInRight">
+                        <h2 style="color: #0abab5;">Food and Water Supply Services</h2>
+                        <p>Enjoy convenient access to fresh, quality essentials delivered right to your doorstep.</p>
+                        <ul>
+                            <li><strong>Safe and clean water delivery:</strong> Purified water options to ensure your family's health and hydration.</li>
+                            <li><strong>Subscription plans available:</strong> Flexible delivery schedules and customizable order options to suit your lifestyle.</li>
+                            <li><strong>Special dietary options:</strong> Catering to various dietary requirements, including organic, vegan, and gluten-free choices.</li>
+                        </ul>
+                        <p>Experience the convenience of having quality food and water supplies delivered consistently and reliably.</p>
+                    </div>
+                    <div class="col-md-6 order-md-1 animate__animated animate__fadeInLeft">
+                        <video autoplay loop muted playsinline class="img-fluid rounded">
+                            <source src="home_assets/food-water-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 style="color: #0abab5;">About Homify</h2>
+                        <p>Homify is your trusted partner in all things related to housing. We connect you with top professionals and services to make your housing experience seamless and enjoyable.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="home_assets/homify-logo.png" alt="About Homify" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="text-center mb-5" style="color: #0abab5;">Contact Us</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="contact-form" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Get in Touch</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Housing Street, City, Country</p>
+                        <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
+                        <p><i class="fas fa-envelope"></i> info@homify.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Homify. All rights reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="social-icons list-inline text-md-right">
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+$(document).ready(function() {
+    // Close the mobile menu when a nav item is clicked
+    $('.navbar-nav>li>a').on('click', function(){
+        $('.navbar-collapse').collapse('hide');
+    });
+});
+    </script>
+        <script>
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var formData = new FormData(this);
+
+    fetch('process_form.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(data.message);
+            // Optionally reset the form
+            this.reset();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    });
+});
+    </script>
+    <script>
+        function checkLoginStatus() {
+            fetch('check_session.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        updateUIForLoggedInUser(data.userName, data.isServiceProvider);
+                        releaseProtectedLinks();
+                    } else {
+                        updateUIForLoggedOutUser();
+                    }
+                });
+        }
+    
+        function updateUIForLoggedInUser(userName, isServiceProvider) {
+            const userMenu = document.getElementById('userMenu');
+            userMenu.innerHTML = `
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ${userName}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="logout.php">Logout</a>
+                    </div>
+                </div>
+            `;
+        }
+    
+        function updateUIForLoggedOutUser() {
+            const userMenu = document.getElementById('userMenu');
+            userMenu.innerHTML = `
+                <a href="login.html" id="login-btn" class="btn btn-outline-light mr-2">Login</a>
+                <a href="signup.html" id="signup-btn" class="btn btn-primary">Sign up</a>
+            `;
+        }
+    
+        function releaseProtectedLinks() {
+            const protectedLinks = document.querySelectorAll('.dropdown-item, .service-card');
+            protectedLinks.forEach(link => {
+                link.removeEventListener('click', preventDefaultAndCheckLogin);
+            });
+        }
+    
+        function preventDefaultAndCheckLogin(event) {
+            event.preventDefault();
+            window.location.href = 'login.html';
+        }
+    
+        // Add event listeners to protected links
+        window.onload = function() {
+            const protectedLinks = document.querySelectorAll('.dropdown-item, .service-card');
+            protectedLinks.forEach(link => {
+                link.addEventListener('click', preventDefaultAndCheckLogin);
+            });
+            
+            // Check login status when the page loads
+            checkLoginStatus();
+        };
+    </script>
+</body>
+</html>

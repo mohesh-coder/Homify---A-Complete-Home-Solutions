@@ -1,0 +1,11 @@
+CREATE TABLE quote_requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    provider_name VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    service_date DATE NOT NULL,
+    additional_info TEXT,
+    problem TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);

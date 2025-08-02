@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Water and Food Supply</title>
+    <style>
+        :root {
+            --tiffany-blue: #0ABAB5;
+            --dark-background: #2E2E2E;
+            --light-text: #FFFFFF;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--dark-background);
+            color: var(--light-text);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--tiffany-blue);
+            padding: 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: var(--dark-background);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-background);
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 1rem;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: var(--tiffany-blue);
+            color: var(--dark-background);
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: darken(var(--tiffany-blue), 10%);
+        }
+
+        footer {
+            background-color: var(--tiffany-blue);
+            color: var(--dark-background);
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--tiffany-blue);
+            color: var(--dark-background);
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #back-to-top.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water_supply/water_supply.html">Water Supply</a></li>
+                <li><a href="food_supply/food_supply.html">Food Supply</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>If you have any questions or inquiries, feel free to contact us using the form below or reach out to us via phone or email.</p>
+            <p><strong>Email:</strong> contact@waterfoodsupply.com</p>
+            <p><strong>Phone:</strong> +1-123-456-7890</p>
+        </div>
+        <div class="contact-form">
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Water and Food Supply. All rights reserved.
+    </footer>
+
+    <button id="back-to-top" title="Back to top">&uarr;</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Back-to-top button
+            const backToTopBtn = document.getElementById('back-to-top');
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
+            };
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+
+            // Form submission (dummy action)
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Your message has been sent!');
+                // Here you can add further logic to send the form data via Ajax or perform other actions
+                // Reset form if needed: contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

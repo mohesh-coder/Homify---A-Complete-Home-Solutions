@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Property - Homify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-color: #0abab5; /* Tiffany Blue */
+            --secondary-color: #1e1e1e; /* Dark Gray */
+            --text-color: #f4f4f4; /* Light Gray */
+            --background-color: #121212; /* Very Dark Gray */
+            --form-background-color: #2b2b2b; /* Form Background */
+            --toast-background: #1e1e1e;
+            --toast-success: #0abab5; /* Tiffany Blue */
+            --text: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .property-form {
+            background: var(--form-background-color);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .property-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .property-form form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .property-form label {
+            font-weight: bold;
+        }
+
+        .property-form input,
+        .property-form select,
+        .property-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .property-form button {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .property-form button:hover {
+            background-color: #089690;
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        .footer {
+            background: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: -300px;
+            background-color: var(--toast-background);
+            color: var(--text);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            transition: right 0.5s ease-in-out;
+            z-index: 1000;
+        }
+
+        .notification__content {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon__wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--toast-success);
+            margin-right: 10px;
+        }
+
+        .icon__wrapper svg {
+            stroke: var(--toast-background);
+            stroke-width: 3px;
+        }
+
+        .notification.show {
+            right: 20px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVWZXBnQtGGnVZYPyFMU5Yp25ZH7FAUXU&callback=initMap" async defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">Homify</a>
+            </div>
+            <nav class="navbar">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About Us</a>
+                <a href="buy.html">Buy</a>
+                <a href="sell.html">Sell</a>
+                <a href="rent.html">Rent</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="property-form">
+            <h2>List Your Property</h2>
+            <form id="propertyForm">
+                <label for="property_type">Property Type</label>
+                <select id="property_type" name="property_type" required>
+                    <option value="apartment">Apartment</option>
+                    <option value="house">House</option>
+                    <option value="land">Land</option>
+                </select>
+                <i class="fas fa-house"></i>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price (₹):</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" required>
+                    <i class="fas fa-rupee-sign"></i>
+                </div>
+                <div class="form-group">
+                    <label for="sale_or_rent">For Sale/Rent:</label>
+                    <select id="sale_or_rent" name="sale_or_rent" required>
+                        <option value="sale">Sale</option>
+                        <option value="rent">Rent</option>
+                    </select>
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="form-group">
+                    <label for="email_id">Email:</label>
+                    <input type="email" id="email_id" name="email_id" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="form-group"> 
+                    <label for="property_description">Property Description:</label> 
+                    <textarea id="property_description" name="property_description" required></textarea> 
+                    <i class="fas fa-file-alt"></i> 
+                    <small>Please include the proper address of the property, size of the property, and any additional details about the property.</small>
+                </div>
+                
+                <label for="map">Select Location on Map:</label>
+                <small>Please refresh the page if the map not loaded properly.</small>
+                <div id="map"></div>
+                
+                <input type="hidden" id="latitude" name="latitude" required>
+                <input type="hidden" id="longitude" name="longitude" required>
+                
+                <button type="submit">Submit Property</button>
+            </form>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Homify. All rights reserved.</p>
+        <div>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <div class="notification" id="propertySubmittedToast">
+        <div class="notification__content">
+            <div class="icon__wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12l5 5l10 -10"></path>
+                </svg>
+            </div>
+            <span>Property submitted successfully!</span>
+        </div>
+    </div>
+
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 21.00, lng: 78.00},
+                zoom: 8
+            });
+
+            map.addListener('click', function(event) {
+                placeMarker(event.latLng);
+                document.getElementById('latitude').value = event.latLng.lat();
+                document.getElementById('longitude').value = event.latLng.lng();
+            });
+        }
+
+        function placeMarker(location) {
+            if (marker) {
+                marker.setPosition(location);
+            } else {
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+            }
+        }
+
+        document.getElementById('propertyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Validate price
+            const price = document.getElementById('price').value;
+            if (isNaN(price) || price <= 0) {
+                alert('Please enter a valid price greater than 0.');
+                return;
+            }
+
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Send form data to the server
+            fetch('php/submit_property.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show the toast notification
+                    const toast = document.getElementById('propertySubmittedToast');
+                    toast.classList.add('show');
+                    
+                    // Hide the toast after 3 seconds
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 3000);
+
+                    // Reset the form
+                    this.reset();
+                    
+                    // Reset the map marker
+                    if (marker) {
+                        marker.setMap(null);
+                        marker = null;
+                    }
+                } else {
+                    // Handle error
+                    console.error('Error:', data.message);
+                    alert('Failed to submit property. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

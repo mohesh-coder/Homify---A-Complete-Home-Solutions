@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Seeker Search</title>
+    
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #444;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        select,
+        button,
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background-color: #555;
+            color: #fff;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        select,
+        button {
+            background-color: #666;
+            color: #fff;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Service Seeker Search</h1>
+    </header>
+
+    <div class="container">
+        <form action="water_search_service_seekers.php" method="post" id="search-form">
+            <label for="service_type">Service Type:</label>
+            <select id="service_type" name="service_type" required>
+                <option value="drinking water">Drinking Water</option>
+                <option value="normal water">Normal Water</option>
+            </select>
+
+            <label for="city">City:</label>
+            <select id="city" name="city" required>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Vellore">Vellore</option>
+                <!-- Add more cities as needed -->
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 Service Seeker Search. All rights reserved.
+    </footer>
+
+    <script>
+        // Automatically enable dark mode
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const container = document.querySelector('.container');
+            body.classList.add('dark-mode');
+            container.classList.add('dark-mode');
+        });
+
+        // Optional: Smooth scroll to top when form is submitted
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            const serviceType = document.getElementById('service_type').value;
+            const city = document.getElementById('city').value;
+
+            // You can perform additional actions here, such as AJAX request or custom search logic
+
+            // Example: Redirect to search results page
+            window.location.href = `water_search_service_seekers.php?service_type=${serviceType}&city=${city}`;
+        });
+    </script>
+</body>
+</html>

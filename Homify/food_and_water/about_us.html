@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Water and Food Supply</title>
+    <style>
+        :root {
+            --tiffany-blue: #0ABAB5;
+            --dark-background: #2E2E2E;
+            --light-background: #FFFFFF;
+            --light-text: #FFFFFF;
+            --dark-text: #2E2E2E;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--dark-background);
+            color: var(--light-text);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--tiffany-blue);
+            padding: 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: var(--dark-background);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-background);
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            background-color: var(--tiffany-blue);
+            color: var(--dark-background);
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+        }
+
+        footer {
+            background-color: var(--tiffany-blue);
+            color: var(--dark-background);
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--tiffany-blue);
+            color: var(--dark-background);
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .bar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="water_supply/water_supply.html">Water Supply</a></li>
+                <li><a href="food_supply/food_supply.html">Food Supply</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h3>Our Mission</h3>
+            <p>We are dedicated to providing clean and sustainable water and food supply solutions to communities worldwide.</p>
+        </div>
+        <div class="card">
+            <h3>Our Vision</h3>
+            <p>To ensure every person has access to safe water and nutritious food, promoting health and well-being globally.</p>
+        </div>
+        <div class="card">
+            <h3>Why Choose Us?</h3>
+            <p>With years of experience and a commitment to quality, we strive to innovate and deliver reliable services that meet the needs of our customers.</p>
+        </div>
+    </div>
+
+    <button id="scroll-to-top">↑</button>
+
+    <footer>
+        &copy; 2024 Water and Food Supply. All rights reserved.
+    </footer>
+
+    <script>
+        // Animate cards on page load
+        window.addEventListener('load', function() {
+            var cards = document.querySelectorAll('.card');
+            cards.forEach(function(card, index) {
+                setTimeout(function() {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }, 200 * index);
+            });
+        });
+
+        // Scroll to top button
+        var scrollToTopBtn = document.getElementById('scroll-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.display = 'block';
+                setTimeout(() => scrollToTopBtn.style.opacity = 1, 100);
+            } else {
+                scrollToTopBtn.style.opacity = 0;
+                setTimeout(() => scrollToTopBtn.style.display = 'none', 300);
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
